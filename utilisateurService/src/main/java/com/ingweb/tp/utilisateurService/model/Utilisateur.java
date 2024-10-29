@@ -1,26 +1,28 @@
 package com.ingweb.tp.utilisateurService.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Utilisateur {
+public class Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
+
     private String nom;
-    private String email;
+
     private String motDePasse;
 
-}
+    private String email;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+
+}
 

@@ -5,36 +5,26 @@ import com.ingweb.tp.utilisateurService.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class UtilisateurService {
-
-    private final UtilisateurRepository utilisateurRepository;
-
     @Autowired
-    public UtilisateurService(UtilisateurRepository utilisateurRepository) {
-        this.utilisateurRepository = utilisateurRepository;
+    private UtilisateurRepository utilisateurRepository;
+
+    public List<Utilisateur> findAll() {
+        return utilisateurRepository.findAll();
     }
 
-    public Utilisateur inscrire(Utilisateur utilisateur) {
+    public Utilisateur findById(Long id) {
+        return utilisateurRepository.findById(id).orElse(null);
+    }
+
+    public Utilisateur save(Utilisateur utilisateur) {
         return utilisateurRepository.save(utilisateur);
     }
 
-    public Utilisateur authentifier(String email, String motDePasse) {
-        Utilisateur utilisateur = utilisateurRepository.findByEmail(email);
-        if (utilisateur != null && utilisateur.getMotDePasse().equals(motDePasse)) {
-            return utilisateur;
-        }
-        return null;
-    }
-
-    public Optional<Utilisateur> modifierInformation(Long id, Utilisateur utilisateurDetails) {
-        return utilisateurRepository.findById(id).map(utilisateur -> {
-            utilisateur.setNom(utilisateurDetails.getNom());
-            utilisateur.setEmail(utilisateurDetails.getEmail());
-            utilisateur.setMotDePasse(utilisateurDetails.getMotDePasse());
-            return utilisateurRepository.save(utilisateur);
-        });
+    public void deleteById(Long id) {
+        utilisateurRepository.deleteById(id);
     }
 }

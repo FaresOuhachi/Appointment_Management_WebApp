@@ -6,33 +6,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/utilisateurs")
+@RequestMapping("/utilisateurs")
 public class UtilisateurController {
-
-    private final UtilisateurService utilisateurService;
-
     @Autowired
-    public UtilisateurController(UtilisateurService utilisateurService) {
-        this.utilisateurService = utilisateurService;
+    private UtilisateurService utilisateurService;
+
+    @GetMapping
+    public List<Utilisateur> getAllUtilisateurs() {
+        return utilisateurService.findAll();
     }
 
-    @PostMapping("/inscrire")
-    public Utilisateur inscrire(@RequestBody Utilisateur utilisateur) {
-        return utilisateurService.inscrire(utilisateur);
+    @GetMapping("/{id}")
+    public ResponseEntity<Utilisateur> getUtilisateurById(@PathVariable Long id) {
+        Utilisateur utilisateur = utilisateurService.findById(id);
+        return utilisateur != null ? ResponseEntity.ok(utilisateur) : ResponseEntity.notFound().build();
     }
 
-    @PostMapping("/authentifier")
-    public ResponseEntity<Utilisateur> authentifier(@RequestParam String email, @RequestParam String motDePasse) {
-        Utilisateur utilisateur = utilisateurService.authentifier(email, motDePasse);
-        return utilisateur != null ? ResponseEntity.ok(utilisateur) : ResponseEntity.status(401).build();
+    @PostMapping
+    public Utilisateur createUtilisateur(@RequestBody Utilisateur utilisateur) {
+        return utilisateurService.save(utilisateur);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Utilisateur> modifierInformation(@PathVariable Long id, @RequestBody Utilisateur utilisateurDetails) {
-        Optional<Utilisateur> updatedUtilisateur = utilisateurService.modifierInformation(id, utilisateurDetails);
-        return updatedUtilisateur.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    @PatchMapping("/{id}")
+    public ResponseEntity<Utilisateur> updateUtilisateur(@PathVariable Long id, @RequestBody Utilisateur utilisateurDetails) {
+        Utilisateur utilisateur = utilisateurService.findById(id);
+        if (utilisateur == null) {
+            return ResponseEntity.notFound().build();
+        }
+        utilisateur.setNom(utilisateurDetails.getNom());
+        utilisateur.setMotDePasse(utilisateurDetails.getMotDePasse());
+        utilisateur.setEmail(utilisateurDetails.getEmail());
+        utilisateur.setRole(utilisateurDetails.getRole());
+        return ResponseEntity.ok(utilisateurService.save(utilisateur));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUtilisateur(@PathVariable Long id) {
+        utilisateurService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

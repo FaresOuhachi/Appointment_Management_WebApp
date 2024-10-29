@@ -1,0 +1,60 @@
+@startuml
+
+enum Role {
+    ADMIN
+    PROFESSIONNEL
+    CLIENT
+}
+
+enum Statut {
+    PROGRAMMÉ
+    ANNULÉ
+    TERMINÉ
+}
+
+package "Utilisateur Service" {
+    class Utilisateur {
+        - id: Long
+        - nom: String
+        - motDePasse: String
+        - email: String
+        - role: Role
+        + gérerProfil()
+    }
+}
+
+package "RendezVous Service" {
+    class RendezVous {
+        - id: Long
+        - dateHeure: LocalDateTime
+        - statut: Statut
+        - clientId: Long
+        - professionnelId: Long
+        + reprogrammer()
+        + annuler()
+    }
+}
+
+package "Disponibilité Service" {
+    class Disponibilité {
+        - id: Long
+        - professionnelId: Long
+        - dateHeure: LocalDateTime
+        - duree: Integer
+        + ajouterCréneau()
+        + supprimerCréneau()
+    }
+}
+
+note right of Utilisateur
+    Role-specific methods:
+    - Professionnel: gérerDisponibilité()
+    - Client: réserverRendezVous(), annulerRendezVous()
+    - Administrateur: gérerUtilisateurs(), gérerRendezVous()
+end note
+
+Utilisateur -- RendezVous : interacts
+Utilisateur -- Disponibilité : manages
+RendezVous -- Disponibilité : schedules
+
+@enduml

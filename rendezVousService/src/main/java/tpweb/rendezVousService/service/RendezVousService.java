@@ -6,31 +6,33 @@ import tpweb.rendezVousService.model.RendezVous;
 import tpweb.rendezVousService.repository.RendezVousRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RendezVousService {
     @Autowired
     private RendezVousRepository rendezVousRepository;
 
-    public List<RendezVous> getAllRendezVous() {
+    public List<RendezVous> findAll() {
         return rendezVousRepository.findAll();
     }
 
-    public Optional<RendezVous> getRendezVousById(Long id) {
-        return rendezVousRepository.findById(id);
+    public RendezVous findById(Long id) {
+        return rendezVousRepository.findById(id).orElse(null);
     }
 
-    public RendezVous createRendezVous(RendezVous rendezVous) {
+    public RendezVous save(RendezVous rendezVous) {
         return rendezVousRepository.save(rendezVous);
     }
 
-    public RendezVous updateRendezVous(Long id, RendezVous rendezVous) {
-        rendezVous.setId(id);
-        return rendezVousRepository.save(rendezVous);
-    }
-
-    public void deleteRendezVous(Long id) {
+    public void deleteById(Long id) {
         rendezVousRepository.deleteById(id);
+    }
+
+    public List<RendezVous> findByClientId(Long clientId) {
+        return rendezVousRepository.findByClientId(clientId);
+    }
+
+    public List<RendezVous> findByProfessionnelId(Long professionnelId) {
+        return rendezVousRepository.findByProfessionnelId(professionnelId);
     }
 }

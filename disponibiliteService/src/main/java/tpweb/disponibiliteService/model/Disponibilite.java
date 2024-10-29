@@ -1,13 +1,15 @@
 package tpweb.disponibiliteService.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -15,13 +17,14 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name = "disponibilite")
 public class Disponibilite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date date;
-    private String heureDebut;
-    private String heureFin;
+    private Long professionnelId;
+
+    private LocalDateTime dateHeure;
+    private Integer duree;
+
 }

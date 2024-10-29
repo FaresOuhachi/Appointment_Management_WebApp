@@ -14,24 +14,23 @@ public class DisponibiliteService {
     @Autowired
     private DisponibiliteRepository disponibiliteRepository;
 
-    public List<Disponibilite> getAllDisponibilites() {
+    public List<Disponibilite> findAll() {
         return disponibiliteRepository.findAll();
     }
 
-    public Optional<Disponibilite> getDisponibiliteById(Long id) {
-        return disponibiliteRepository.findById(id);
+    public Disponibilite findById(Long id) {
+        return disponibiliteRepository.findById(id).orElse(null);
     }
 
-    public Disponibilite createDisponibilite(Disponibilite disponibilite) {
+    public Disponibilite save(Disponibilite disponibilite) {
         return disponibiliteRepository.save(disponibilite);
     }
 
-    public Disponibilite updateDisponibilite(Long id, Disponibilite disponibilite) {
-        disponibilite.setId(id);
-        return disponibiliteRepository.save(disponibilite);
-    }
-
-    public void deleteDisponibilite(Long id) {
+    public void deleteById(Long id) {
         disponibiliteRepository.deleteById(id);
+    }
+
+    public List<Disponibilite> findByProfessionnelId(Long professionnelId) {
+        return disponibiliteRepository.findByProfessionnelId(professionnelId);
     }
 }

@@ -1,24 +1,26 @@
 package tpweb.rendezVousService.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name = "rendezvous")
 public class RendezVous {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date date;
-    private String heure;
+    private LocalDateTime dateHeure;
+
+    @Enumerated(EnumType.STRING)
+    private Statut statut;
+
+    private Long clientId;
+
+    private Long professionnelId;
 }
