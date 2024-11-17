@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface DisponibiliteRepository extends JpaRepository<Disponibilite, Long> {
     List<Disponibilite> findByProfessionnelId(Long professionnelId);
+
+//    List<Disponibilite> findByPrix(Integer prix);
 }

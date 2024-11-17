@@ -33,4 +33,8 @@ public class DisponibiliteService {
     public List<Disponibilite> findByProfessionnelId(Long professionnelId) {
         return disponibiliteRepository.findByProfessionnelId(professionnelId);
     }
+
+//    public List<Disponibilite> findByPrix(Integer prix) {
+//        return disponibiliteRepository.findByPrix(prix);
+//    }
 }

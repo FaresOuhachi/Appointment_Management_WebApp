@@ -1,7 +1,7 @@
 package tpweb.rendezVousService.model;
 
 public enum Statut {
-    PROGRAMMÉ,
-    ANNULÉ,
-    TERMINÉ
+    LIBRE,
+    En_ATTENTE,
+    CONFIRME,
 }

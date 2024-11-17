@@ -27,4 +27,6 @@ public class Disponibilite {
     private LocalDateTime dateHeure;
     private Integer duree;
 
+//    private Integer prix;
+
 }
