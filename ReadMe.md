@@ -22,6 +22,10 @@ Voici le diagramme de classes utilisé pour ce projet :
 
 ![Diagramme de Classes](./images/diagramme_architecture.png)
 
+# Diagramme des microservices
+Voici le diagramme des microservices utilisé pour ce projet :
+
+![Diagramme des Microservices](./images/microservices_diagram.png)
 
 # Test des endpoints:
 

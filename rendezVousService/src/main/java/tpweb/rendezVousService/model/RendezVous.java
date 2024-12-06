@@ -15,12 +15,13 @@ public class RendezVous {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDateTime dateHeure;
-
     @Enumerated(EnumType.STRING)
     private Statut statut;
 
     private Long clientId;
 
-    private Long professionnelId;
+    private Long professionalId;
+
+    private Long disponibiliteId;
 }
+

@@ -22,11 +22,10 @@ public class Disponibilite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long professionnelId;
+    private Long professionalId;
 
-    private LocalDateTime dateHeure;
-    private Integer duree;
+    private LocalDateTime dateDebut;
 
-//    private Integer prix;
+    private LocalDateTime dateFin;
 
 }

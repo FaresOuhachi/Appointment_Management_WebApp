@@ -1,6 +1,5 @@
 package tpweb.rendezVousService.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tpweb.rendezVousService.model.RendezVous;
 import tpweb.rendezVousService.repository.RendezVousRepository;
@@ -9,8 +8,11 @@ import java.util.List;
 
 @Service
 public class RendezVousService {
-    @Autowired
-    private RendezVousRepository rendezVousRepository;
+    private final RendezVousRepository rendezVousRepository;
+
+    public RendezVousService(RendezVousRepository rendezVousRepository) {
+        this.rendezVousRepository = rendezVousRepository;
+    }
 
     public List<RendezVous> findAll() {
         return rendezVousRepository.findAll();
@@ -32,7 +34,7 @@ public class RendezVousService {
         return rendezVousRepository.findByClientId(clientId);
     }
 
-    public List<RendezVous> findByProfessionnelId(Long professionnelId) {
-        return rendezVousRepository.findByProfessionnelId(professionnelId);
+    public List<RendezVous> findByProfessionalId(Long professionalId) {
+        return rendezVousRepository.findByProfessionalId(professionalId);
     }
 }

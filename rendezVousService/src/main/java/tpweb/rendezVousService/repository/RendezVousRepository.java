@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface RendezVousRepository extends JpaRepository<RendezVous, Long> {
     List<RendezVous> findByClientId(Long clientId);
-    List<RendezVous> findByProfessionnelId(Long professionnelId);
+    List<RendezVous> findByProfessionalId(Long professionalId);
 }

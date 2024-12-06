@@ -8,7 +8,6 @@ import tpweb.disponibiliteService.model.Disponibilite;
 import tpweb.disponibiliteService.service.DisponibiliteService;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 @RestController
 @RequestMapping("/disponibilites")
@@ -27,33 +26,10 @@ public class DisponibiliteController {
         return disponibilite != null ? ResponseEntity.ok(disponibilite) : ResponseEntity.notFound().build();
     }
 
-//    @GetMapping("/{id}")
-//    public Integer getDisponibilitePrixById(@PathVariable Long id) {
-//        Disponibilite disponibilite = disponibiliteService.findById(id);
-//        return disponibilite.getPrix();
-//    }
-
-    @GetMapping("/professionnel/{professionnelId}")
-    public List<Disponibilite> getDisponibiliteByProfessionnelId(@PathVariable Long professionnelId) {
-        return disponibiliteService.findByProfessionnelId(professionnelId);
+    @GetMapping("/professional/{professionalId}")
+    public List<Disponibilite> getDisponibiliteByProfessionalId(@PathVariable Long professionalId) {
+        return disponibiliteService.findByProfessionalId(professionalId);
     }
-
-//    @GetMapping("/searchByPrix")
-//    public List<Disponibilite> getAllDisponibilitesWithPriceX(@RequestParam("prix") String prix){
-//        Integer price = Integer.parseInt(prix);
-//        return disponibiliteService.findByPrix(price);
-//    }
-
-//    @GetMapping("/professionnel/{professionnelId}")
-//    public AtomicReference<Integer> getSumOfDisponibiliteById(@PathVariable Long professionnelId){
-//        List<Disponibilite> disponibilites = disponibiliteService.findByProfessionnelId(professionnelId);
-//        AtomicReference<Integer> SumOfDisponibilitePrice = new AtomicReference<>(0);
-//        disponibilites.forEach( disponibilite -> SumOfDisponibilitePrice.updateAndGet(v -> v + disponibilite.getPrix()));
-//
-//        return SumOfDisponibilitePrice;
-//        }
-
-
 
     @PostMapping
     public Disponibilite createDisponibilite(@RequestBody Disponibilite disponibilite) {
@@ -66,10 +42,9 @@ public class DisponibiliteController {
         if (disponibilite == null) {
             return ResponseEntity.notFound().build();
         }
-        disponibilite.setDateHeure(disponibiliteDetails.getDateHeure());
-        disponibilite.setDuree(disponibiliteDetails.getDuree());
-        disponibilite.setProfessionnelId(disponibiliteDetails.getProfessionnelId());
-//        disponibilite.setPrix(disponibiliteDetails.getPrix());
+        disponibilite.setDateDebut(disponibiliteDetails.getDateDebut());
+        disponibilite.setDateFin(disponibiliteDetails.getDateFin());
+        disponibilite.setProfessionalId(disponibiliteDetails.getProfessionalId());
         return ResponseEntity.ok(disponibiliteService.save(disponibilite));
     }
 

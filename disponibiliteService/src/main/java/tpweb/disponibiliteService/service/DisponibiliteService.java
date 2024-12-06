@@ -7,7 +7,6 @@ import tpweb.disponibiliteService.model.Disponibilite;
 import tpweb.disponibiliteService.repository.DisponibiliteRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class DisponibiliteService {
@@ -30,11 +29,8 @@ public class DisponibiliteService {
         disponibiliteRepository.deleteById(id);
     }
 
-    public List<Disponibilite> findByProfessionnelId(Long professionnelId) {
-        return disponibiliteRepository.findByProfessionnelId(professionnelId);
+    public List<Disponibilite> findByProfessionalId(Long professionalId) {
+        return disponibiliteRepository.findByProfessionalId(professionalId);
     }
 
-//    public List<Disponibilite> findByPrix(Integer prix) {
-//        return disponibiliteRepository.findByPrix(prix);
-//    }
 }

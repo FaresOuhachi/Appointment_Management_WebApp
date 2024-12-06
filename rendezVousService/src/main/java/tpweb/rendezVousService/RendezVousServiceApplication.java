@@ -2,10 +2,10 @@ package tpweb.rendezVousService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.openfeign.*;
 
-@SpringBootApplication
 @EnableFeignClients
+@SpringBootApplication
 public class RendezVousServiceApplication {
 
 	public static void main(String[] args) {
