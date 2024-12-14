@@ -1,0 +1,96 @@
+<div class="bg-[#09090B] min-h-screen min-w-full pt-24">
+  <div class="flex items-center pl-8 lg:pl-32">
+    <a
+      [routerLink]="'/home'"
+      aria-label="Retourner"
+      class="flex items-center text-sm text-[#E2E2E2] bg-transparent hover:text-blue-500 focus:outline-none"
+    >
+      <span class="mr-2">&larr;</span> Retour
+    </a>
+  </div>
+
+  <div class="flex items-center justify-center h-full w-full">
+    <section class="w-full max-w-6xl p-8 text-[#E2E2E2] rounded-lg shadow-lg flex flex-col gap-8">
+      <div class="flex-1">
+        <h3 class="text-3xl pb-4 font-semibold text-center">Gérer les disponibilités</h3>
+        <p class="mt-2 text-sm text-center">Définissez vos disponibilités pour les dates et horaires à venir</p>
+
+        <!-- Form for adding new disponibilite -->
+        <form (ngSubmit)="addDisponibilite()" [formGroup]="disponibiliteForm" class="space-y-6 mt-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div>
+              <label class="block mb-2 text-sm" for="dateDebut">Date de début</label>
+              <input
+                class="w-full p-2 bg-transparent border border-gray-300 rounded-md placeholder-opacity-50 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                formControlName="dateDebut"
+                id="dateDebut"
+                type="date"
+              />
+            </div>
+            <div>
+              <label class="block mb-2 text-sm" for="start-time">Heure de début</label>
+              <input
+                class="w-full p-2 bg-transparent border border-gray-300 rounded-md placeholder-opacity-50 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                formControlName="startTime"
+                id="start-time"
+                type="time"
+              />
+            </div>
+            <div>
+              <label class="block mb-2 text-sm" for="end-time">Heure de fin</label>
+              <input
+                class="w-full p-2 bg-transparent border border-gray-300 rounded-md placeholder-opacity-50 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                formControlName="endTime"
+                id="end-time"
+                type="time"
+              />
+            </div>
+          </div>
+          <div class="flex justify-center">
+            <button
+              class="w-full max-w-xs px-4 py-2 bg-[#E2E2E2] text-[#09090B] rounded-md text-sm hover:bg-blue-700 hover:text-[#E2E2E2]"
+              type="submit"
+              [disabled]="!isTimeValid() || !disponibiliteForm.valid"
+            >
+              Ajouter une disponibilité
+            </button>
+          </div>
+        </form>
+
+        <!-- Table to display disponibilites -->
+        <div>
+          <table class="w-full mt-8 text-sm table-auto border-collapse">
+            <thead class=" bg-[#161618] border-b border-[#27272a] ">
+            <tr>
+              <th class="px-4 py-2 text-left ">Date de début</th>
+              <th class="px-4 py-2 text-left ">Heure de début</th>
+              <th class="px-4 py-2 text-left ">Heure de fin</th>
+              <th class="px-4 py-2 text-left ">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let disponibilite of disponibilites" class='border-b border-[#27272a]'>
+              <td class="px-4 py-6 ">{{ disponibilite.dateDebut | date: 'shortDate' }}</td>
+              <td class="px-4 py-6 ">{{ disponibilite.dateDebut | date: 'shortTime' }}</td>
+              <td class="px-4 py-6 ">{{ disponibilite.dateFin | date: 'shortTime' }}</td>
+              <td class="px-4 py-6 ">
+                <button
+                  (click)="removeDisponibilite(disponibilite.id)"
+                  class="text-red-500 hover:text-red-700"
+                >
+                  Supprimer
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+          <!-- Message when there are no disponibilites -->
+          <div *ngIf="disponibilites.length === 0" class="mt-4 text-center text-sm text-[#52525b]">
+            <p>Vous n'avez pas de disponibilités enregistrées.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

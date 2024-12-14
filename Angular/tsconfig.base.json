@@ -1,0 +1,26 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "bundler",
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": ["ES2022", "dom"],
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@spartan-ng/ui-avatar-helm": ["ui-avatar-helm/src/index.ts"],
+      "@spartan-ng/ui-button-helm": ["libs/ui-button-helm/src/index.ts"],
+      "@spartan-ng/ui-card-helm": ["libs/ui-card-helm/src/index.ts"],
+      "@spartan-ng/ui-command-helm": ["libs/ui-command-helm/src/index.ts"],
+      "@spartan-ng/ui-formfield-helm": ["libs/ui-formfield-helm/src/index.ts"],
+      "@spartan-ng/ui-icon-helm": ["libs/ui-icon-helm/src/index.ts"],
+      "@spartan-ng/ui-input-helm": ["libs/ui-input-helm/src/index.ts"],
+      "@spartan-ng/ui-label-helm": ["libs/ui-label-helm/src/index.ts"],
+      "@spartan-ng/ui-popover-helm": ["libs/ui-popover-helm/src/index.ts"]
+    }
+  }
+}

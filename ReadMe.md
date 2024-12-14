@@ -20,30 +20,30 @@ Le Service ***Disponibilité*** permet aux professionnels de définir et gérer 
 # Diagramme de classes (conception)
 Voici le diagramme de classes utilisé pour ce projet :
 
-![Diagramme de Classes](./images/diagramme_architecture.png)
+![Diagramme de Classes](Spring%20Boot/images/diagramme_architecture.png)
 
 # Diagramme de classes (implémentation)
 Voici le diagramme de classes utilisé pour ce projet :
 
-![Diagramme de Classes](./images/final_diagram.png)
+![Diagramme de Classes](Spring%20Boot/images/final_diagram.png)
 
 # Diagramme des microservices
 Voici le diagramme des microservices utilisé pour ce projet :
 
-![Diagramme des Microservices](./images/microservices_diagram.png)
+![Diagramme des Microservices](Spring%20Boot/images/microservices_diagram.png)
 
 # Test des endpoints:
 
 ### Utilisateur Endpoints Test:
 
-![Utilisateur Microservice Endpoints](./images/UtilisateurService%20Endpoints.png)
+![Utilisateur Microservice Endpoints](Spring%20Boot/images/UtilisateurService%20Endpoints.png)
 
 ### RendezVous Endpoints Test:
 
 
-![RendezVous Microservice Endpoints](./images/RendezVousService%20Endpoints.png)
+![RendezVous Microservice Endpoints](Spring%20Boot/images/RendezVousService%20Endpoints.png)
 
 ### Disponibilité Endpoints Test:
 
 
-![Disponibilité Microservice Endpoints](./images/DisponibiliteService%20Endpoints.png)
+![Disponibilité Microservice Endpoints](Spring%20Boot/images/DisponibiliteService%20Endpoints.png)

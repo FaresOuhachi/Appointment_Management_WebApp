@@ -1,0 +1,29 @@
+<div class="bg-[#09090B] text-[#E2E2E2] min-h-screen flex flex-col">
+  <nav class="sticky top-0 z-50 bg-[#161618] shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex-grow"></div>
+        <div class="flex items-center space-x-6">
+          <p class="text-gray-400">
+            Hello <span class="font-bold text-[#E2E2E2]">{{ username }}</span>
+            (<span class="font-bold text-[#E2E2E2]">{{ role }}</span>)
+          </p>
+          <button
+            (click)="logout()"
+            class="inline-flex items-center justify-center px-5 py-2
+                   text-sm font-medium text-[#09090B] bg-[#E2E2E2]
+                   rounded-lg hover:bg-red-500 hover:text-white
+                   transition duration-300 ease-in-out">
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow container mx-auto px-4 py-8 ">
+    <!-- Conditional rendering based on role -->
+    <app-client *ngIf="role === 'client'"></app-client>
+    <app-professional *ngIf="role === 'professional'"></app-professional>
+  </main>
+</div>

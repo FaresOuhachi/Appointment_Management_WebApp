@@ -1,0 +1,69 @@
+<div class="bg-[#09090B] min-h-screen pt-24">
+  <div class="flex items-center pl-8 lg:pl-32">
+    <a
+      [routerLink]="'/home'"
+      aria-label="Go Back"
+      class="flex items-center text-sm text-[#E2E2E2] bg-transparent hover:text-blue-500 focus:outline-none"
+    >
+      <span class="mr-2">&larr;</span> Retour
+    </a>
+  </div>
+
+  <div class="flex items-center justify-center w-full">
+    <section class="w-full max-w-6xl p-8 text-[#E2E2E2] rounded-lg shadow-lg flex flex-col gap-8">
+      <!-- Filter Section -->
+      <div class="flex flex-wrap justify-between gap-4 mb-6">
+        <h4 class="text-xl font-semibold mb-6 text-center w-full">Liste des Rendez-vous</h4>
+
+        <!-- Appointments Table -->
+        <div class="overflow-x-auto w-full">
+          <table class="w-full bg-[#09090B] rounded-lg overflow-hidden">
+            <thead>
+            <tr class="bg-[#18181b] text-[#E2E2E2]">
+              <th class="px-4 py-3 text-left text-sm">Client</th>
+              <th class="px-4 py-3 text-left text-sm">Date</th>
+              <th class="px-4 py-3 text-left text-sm">Heure</th>
+              <th class="px-4 py-3 text-left text-sm">Statut</th>
+              <th class="px-4 py-3 text-right text-sm"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr
+              *ngFor="let appointment of MesRendezVous"
+              class="bg-[#0D0D0D] border-b border-[#27272a] hover:bg-[#1f1f23] transition"
+            >
+              <td class="px-4 py-4 text-sm">{{ appointment.client.nom }}</td>
+              <td class="px-4 py-4 text-sm">{{ formatDate(appointment.disponibilite.dateDebut)  }}</td>
+              <td class="px-4 py-4 text-sm">{{ formatTime(appointment.disponibilite.dateDebut , appointment.disponibilite.dateFin) }}</td>
+              <td [ngClass]="getStatutClass(appointment.statut)" class="px-4 py-4 text-sm">
+                {{ formatStatut(appointment.statut) }}
+              </td>
+              <td class="px-4 py-4 text-right space-x-2">
+                <button
+                  (click)="updateRdvStatut(appointment.id, 'CONFIRME')"
+                  *ngIf="appointment.statut === 'EN_ATTENTE'"
+                  class="bg-[#27272a] text-white px-3 py-1.5 rounded-md text-sm hover:bg-green-600 transition"
+                >
+                  Confirmer
+                </button>
+                <button
+                  (click)="updateRdvStatut(appointment.id, 'ANNULE')"
+                  *ngIf="appointment.statut === 'EN_ATTENTE'"
+                  class="bg-[#a1a1aa] text-[#18181b] px-3 py-1.5 rounded-md text-sm hover:bg-red-400 hover:text-white transition"
+                >
+                  Refuser
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="MesRendezVous.length === 0">
+              <td class="px-4 py-6 text-center text-gray-400 text-sm" colspan="5">
+                Aucun rendez-vous trouvé.
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<main class="flex justify-center items-center min-h-screen bg-[#09090B] min-w-full">
+  <section class="w-96 p-6 bg-transparent text-[#E2E2E2] rounded-md shadow-lg flex flex-col border-[#444444]" hlmCard>
+    <div hlmCardHeader>
+      <h3 class="text-3xl pb-6 font-semibold text-center" hlmCardTitle>Register</h3>
+      <p class="mt-2 text-sm text-[#a1a1aa]">Fill the following form to create a new account</p>
+    </div>
+    <p class="mt-4" hlmCardContent>
+      <label class="block mb-4" hlmLabel>
+        Full Name:
+        <input
+          class="mt-1.5 w-full p-2 text-[#E2E2E2] bg-[#09090B] border-[#444444] rounded-md placeholder-opacity-50 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          hlmInput
+          placeholder="John Doe"
+          type="text"
+          [(ngModel)]="fullName"
+        />
+      </label>
+
+      <label class="block mb-4" hlmLabel>
+        Email:
+        <input
+          class="mt-1.5 w-full p-2 text-[#E2E2E2] bg-[#09090B] border-[#444444] rounded-md placeholder-opacity-50 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          hlmInput
+          placeholder="example@mail.com"
+          type="email"
+          [(ngModel)]="email"
+        />
+      </label>
+
+      <label class="block mb-4" hlmLabel>
+        Password:
+        <input
+          class="mt-1.5 w-full p-2 text-[#E2E2E2] bg-[#09090B] border-[#444444] rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+          hlmInput
+          placeholder="********"
+          type="password"
+          [(ngModel)]="password"
+        />
+      </label>
+
+      <label class="block mb-4" hlmLabel>
+        Role:
+        <div class="relative mt-1.5">
+          <button
+            id="dropdownRoleButton"
+            class="w-full flex justify-between items-center px-4 py-2 text-[#E2E2E2] bg-[#09090B] border border-[#444444] rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+            type="button"
+            (click)="toggleDropdown()"
+          >
+            {{ selectedRole ? selectedRole.label : 'Select' }}
+            <span class="ml-2">&#9662;</span>
+          </button>
+          <ul
+            *ngIf="dropdownOpen"
+            class="absolute z-10 mt-2 w-full bg-[#09090B] border border-[#444444] rounded-md shadow-md"
+          >
+            <li
+              *ngFor="let role of roles"
+              class="px-4 py-2 cursor-pointer hover:bg-[#1a1a1c]"
+              (click)="selectRole(role)"
+            >
+              {{ role.label }}
+            </li>
+          </ul>
+        </div>
+      </label>
+    </p>
+    <div class="flex flex-col items-center" hlmCardFooter>
+      <button class="w-full px-4 py-2 bg-[#E2E2E2] text-[#09090B] hover:bg-[#a1a1aa] transition duration-200" hlmBtn (click)="register()">Register</button>
+      <p class="mt-4 text-sm text-[#E2E2E2]">
+        Already have an account?
+        <a [routerLink]="'/login'" class="font-bold text-[#a1a1aa] hover:underline">Login</a>
+      </p>
+    </div>
+  </section>
+</main>
