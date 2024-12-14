@@ -1,5 +1,6 @@
 package com.ingweb.tp.utilisateurService.service;
 
+import com.ingweb.tp.utilisateurService.model.Role;
 import com.ingweb.tp.utilisateurService.model.Utilisateur;
 import com.ingweb.tp.utilisateurService.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,10 @@ public class UtilisateurService {
 
     public Utilisateur findById(Long id) {
         return utilisateurRepository.findById(id).orElse(null);
+    }
+
+    public List<Utilisateur> findByRole(Role role) {
+        return utilisateurRepository.findByRole(role);
     }
 
     public Utilisateur save(Utilisateur utilisateur) {

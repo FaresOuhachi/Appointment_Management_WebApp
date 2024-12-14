@@ -1,5 +1,6 @@
 package com.ingweb.tp.utilisateurService.controller;
 
+import com.ingweb.tp.utilisateurService.model.Role;
 import com.ingweb.tp.utilisateurService.model.Utilisateur;
 import com.ingweb.tp.utilisateurService.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,16 @@ public class UtilisateurController {
     public ResponseEntity<Utilisateur> getUtilisateurById(@PathVariable Long id) {
         Utilisateur utilisateur = utilisateurService.findById(id);
         return utilisateur != null ? ResponseEntity.ok(utilisateur) : ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/professionals")
+    public List<Utilisateur> getProfessionals() {
+        return utilisateurService.findByRole(Role.PROFESSIONNEL);
+    }
+
+    @GetMapping("/clients")
+    public List<Utilisateur> getClients() {
+        return utilisateurService.findByRole(Role.CLIENT);
     }
 
     @PostMapping
