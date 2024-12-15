@@ -39,6 +39,7 @@ export class DisponibiliteComponent implements OnInit {
   fetchDisponibilites(): void {
     this.disponibilitesService.getByProfessionalId(this.professionalId).subscribe(
       (data) => {
+
         this.disponibilites = data;
       },
       (error) => {
@@ -85,8 +86,13 @@ export class DisponibiliteComponent implements OnInit {
 
       this.disponibilitesService.create(newDisponibilite).subscribe(
         (createdDisponibilite) => {
-          this.disponibilites.push(createdDisponibilite);  // Update list
-          this.disponibiliteForm.reset();  // Reset form after successful submission
+          this.disponibilites.push(createdDisponibilite); // Update list
+          this.disponibiliteForm.reset({
+            dateDebut: '',
+            startTime: '',
+            endTime: '',
+            professionalId: this.professionalId // Retain professionalId
+          }); // Reset form after successful submission
           this.formSubmitted = false; // Reset submission flag
         },
         (error) => {
@@ -95,6 +101,7 @@ export class DisponibiliteComponent implements OnInit {
       );
     }
   }
+
 
   // Helper function to combine date and time
   private combineDateAndTime(date: string, time: string): string {

@@ -12,8 +12,8 @@
   <div class="flex items-center justify-center w-full">
     <section class="w-full max-w-6xl p-8 text-[#E2E2E2] rounded-lg shadow-lg flex flex-col gap-8">
       <!-- Filter Section -->
-      <div class="flex flex-wrap justify-between gap-4 mb-6">
-        <h4 class="text-xl font-semibold mb-6 text-center w-full">Liste des Rendez-vous</h4>
+      <div class="flex flex-wrap justify-between gap-4 mb-6" [formGroup]="appointmentForm">
+        <h4 class="text-xl font-semibold mb-6 text-center w-full">Mes Rendez-vous</h4>
 
         <!-- Filter by professional -->
         <div class="w-full sm:w-1/3 mb-4 sm:mb-0">

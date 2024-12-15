@@ -20,7 +20,7 @@ export class MesrendezvousComponent implements OnInit, OnDestroy {
   appointments: any[] = [];
   filteredAppointments: any[] = [];
   professionals: any[] = [];
-  clientId = 4; // Fixed clientId for filtering
+  clientId = 1; // Fixed clientId for filtering
 
   pro = 0;
   date = '';

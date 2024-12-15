@@ -37,7 +37,7 @@ export class RendezVousComponent implements OnInit {
   isSelected: boolean = false;
   loading: boolean = false;
 
-  fixedClientId: number = 4;
+  fixedClientId: number = 1;
 
   constructor(
     private fb: FormBuilder,
