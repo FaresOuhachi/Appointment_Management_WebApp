@@ -1,49 +1,46 @@
+## **Microservices Architecture**
+This project uses a microservices architecture to organize the main functionalities into three distinct services:
 
+**User Service**: Manages user data and operations (clients, professionals).
+**Appointment Service**: Manages the scheduling and tracking of appointments between clients and professionals.
+**Availability Service**: Manages availability slots for professionals.
 
+## **Service Details**
+### User Service
+The **User** Service handles user information, including registration, authentication, and roles (Client, Professional).
 
-# **Architecture des Microservices**
-Ce projet utilise une architecture de microservices pour organiser les fonctionnalités principales en trois services distincts :
+### Appointment Service
+The **Appointment** Service is responsible for creating, updating, and canceling appointments between clients and professionals.
 
-**Service Utilisateur** : Gère les données et opérations des utilisateurs (clients, professionnels).
-**Service RendezVous** : Gère la planification et le suivi des rendez-vous entre clients et professionnels.
-**Service Disponibilité** : Gère les créneaux de disponibilité pour les professionnels.
-## **Détails des Services**
-### Service Utilisateur
-Le Service ***Utilisateur*** gère les informations des utilisateurs, y compris l'inscription, l'authentification et les rôles (Client, Professionnel).
+### Availability Service
+The **Availability** Service allows professionals to define and manage their available time slots for appointments.
 
-### Service RendezVous
-Le Service ***RendezVous*** est responsable de la création, mise à jour et annulation des rendez-vous entre clients et professionnels.
-
-### Service Disponibilité
-Le Service ***Disponibilité*** permet aux professionnels de définir et gérer leurs créneaux horaires disponibles pour les rendez-vous.
-
-# Diagramme de classes (conception)
-Voici le diagramme de classes utilisé pour ce projet :
+# Class Diagram (Design)
+Below is the class diagram used for this project:
 
 ![Diagramme de Classes](images/diagramme_architecture.png)
 
-# Diagramme de classes (implémentation)
-Voici le diagramme de classes utilisé pour ce projet :
+# Class Diagram (Implementation)
+Below is the class diagram used for implementation:
 
 ![Diagramme de Classes](images/final_diagram.png)
 
-# Diagramme des microservices
-Voici le diagramme des microservices utilisé pour ce projet :
+# Microservices Diagram
+Below is the microservices diagram used for this project:
 
 ![Diagramme des Microservices](images/microservices_diagram.png)
 
-# Test des endpoints:
+# Endpoint Tests
 
-### Utilisateur Endpoints Test:
+### User Service Endpoints Test:
 
 ![Utilisateur Microservice Endpoints](images/UtilisateurService%20Endpoints.png)
 
-### RendezVous Endpoints Test:
-
+### Appointment Service Endpoints Test:
 
 ![RendezVous Microservice Endpoints](images/RendezVousService%20Endpoints.png)
 
-### Disponibilité Endpoints Test:
-
+### Availability Service Endpoints Test:
 
 ![Disponibilité Microservice Endpoints](images/DisponibiliteService%20Endpoints.png)
+
