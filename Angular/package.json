@@ -44,7 +44,7 @@
     "@angular/cli": "^18.2.12",
     "@angular/compiler-cli": "^18.2.0",
     "@eslint/js": "^9.8.0",
-    "@nx/angular": "20.8.2",
+    "@nx/angular": "22.0.3",
     "@nx/eslint": "19.8.11",
     "@nx/eslint-plugin": "19.8.11",
     "@nx/jest": "19.8.11",
